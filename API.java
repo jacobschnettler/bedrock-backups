@@ -9,15 +9,18 @@ import java.net.URI;
 public class API {
     private HttpServer server;
 
-    public API(int port) throws IOException {
-        server = HttpServer.create(new java.net.InetSocketAddress(port), 0);
+    int port;
+
+    public API(int _port) throws IOException {
+        server = HttpServer.create(new java.net.InetSocketAddress(_port), 0);
         server.createContext("/", new RouteHandler());
         server.setExecutor(null);
+        port = _port;
     }
 
     public void start() {
         server.start();
-        System.out.println("API started");
+        System.out.println("API started on port " + port);
     }
 
     public void stop() {
@@ -31,23 +34,27 @@ public class API {
             URI uri = exchange.getRequestURI();
             String path = uri.getPath();
 
+            /*
             if (path.startsWith("/download/")) {
-                String id = path.substring("/download/".length());
+            String id = path.substring("/download/".length());
 
-                String response = "Downloading file with ID: " + id;
+            String response = "Downloading file with ID: " + id;
 
-                exchange.sendResponseHeaders(200, response.getBytes().length);
-                OutputStream os = exchange.getResponseBody();
-                os.write(response.getBytes());
-                os.close();
-            } else {
-                String response = "Minecraft Bedrock Server world backups.\nWritten by Jacob Schnettler";
+            exchange.sendResponseHeaders(200, response.getBytes().length);
+            OutputStream os = exchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+            } else {    
+             */
+            
+            String response = "Minecraft Bedrock Server world backups.\nWritten by Jacob Schnettler";
 
-                exchange.sendResponseHeaders(200, response.getBytes().length);
-                OutputStream os = exchange.getResponseBody();
-                os.write(response.getBytes());
-                os.close();
-            }
+            exchange.sendResponseHeaders(200, response.getBytes().length);
+            OutputStream os = exchange.getResponseBody();
+            os.write(response.getBytes());
+            os.close();
+            
+            //}
         }
     }
 }

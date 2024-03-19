@@ -1,6 +1,10 @@
 #BlueJ class context
-comment0.params=worldFolder\ worldName\ backupFolderPath
-comment0.target=void\ createBackup(java.lang.String,\ java.lang.String,\ java.lang.String)
-comment1.params=args
-comment1.target=void\ main(java.lang.String[])
-numComments=2
+comment0.params=webhookUrl\ backupId
+comment0.target=void\ sendDiscordWebhook(java.lang.String,\ java.lang.String)
+comment1.params=worldFolder\ worldName\ backupFolderPath\ webhookURL
+comment1.target=void\ createBackup(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String)
+comment2.params=filePath
+comment2.target=java.util.Map\ readEnvFile(java.lang.String)
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+numComments=4
